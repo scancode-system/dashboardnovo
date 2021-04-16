@@ -4,6 +4,7 @@ namespace Modules\Dashboard\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Dashboard\Database\factories\SallerFactory;
 
 class Saller extends Model
 {
@@ -18,7 +19,7 @@ class Saller extends Model
    */
   protected static function newFactory()
   {
-    return \Modules\Dashboard\Database\factories\SallerFactory::new();
+    return SallerFactory::new();
   }
 
   /**Repository */

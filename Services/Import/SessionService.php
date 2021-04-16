@@ -78,7 +78,7 @@ class SessionService {
 		if($increment){
 			session([$import_class.'.updated' => (self::updated($import_class)+1)]);
 			session()->save();
-			Storage::append('failures/'.$import_class, $report);
+			//Storage::append('failures/'.$import_class, $report);
 		} else {
 			return session($import_class.'.updated', 0);
 		}

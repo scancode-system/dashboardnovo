@@ -28,6 +28,16 @@ class ImportController extends Controller
         return view('dashboard::imports.payment');
     }
 
+    public function client()
+    {
+        return view('dashboard::imports.client');
+    }
+
+    public function product()
+    {
+        return view('dashboard::imports.product');
+    }
+
     /**import operations */
     public function upload(Request $request)
     {

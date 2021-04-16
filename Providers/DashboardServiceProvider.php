@@ -2,10 +2,12 @@
 
 namespace Modules\Dashboard\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\Factory;
 use Laravel\Fortify\Fortify;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Factory;
+use Modules\Dashboard\Console\LoginCreate;
+use Modules\Dashboard\Providers\ValidationServiceProvider;
 
 class DashboardServiceProvider extends ServiceProvider
 {
@@ -49,6 +51,9 @@ class DashboardServiceProvider extends ServiceProvider
         $this->app->register(ViewComposerServiceProvider::class);
         $this->app->register(BladeServiceProvider::class);
         $this->app->register(ObserverServiceProvider::class);
+        $this->app->register(ValidationServiceProvider::class);
+
+        $this->commands([LoginCreate::class]);
     }
 
     /**

@@ -15,4 +15,9 @@ class Shipping extends Model
     {
         return \Modules\Dashboard\Database\factories\ShippingFactory::new();
     }
+
+    /* repository */
+    public static function loadByName($name){
+        return Shipping::where('name', $name)->first();
+    }
 }

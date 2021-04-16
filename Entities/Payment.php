@@ -4,6 +4,7 @@ namespace Modules\Dashboard\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Dashboard\Database\factories\PaymentFactory;
 
 class Payment extends Model
 {
@@ -13,7 +14,7 @@ class Payment extends Model
 
     protected static function newFactory()
     {
-        return \Modules\Dashboard\Database\factories\PaymentFactory::new();
+        return PaymentFactory::new();
     }
 
     /**Repository */
