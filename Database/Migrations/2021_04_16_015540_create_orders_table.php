@@ -25,13 +25,16 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('saller_id')->nullable();
             $table->foreign('saller_id')->references('id')->on('sallers')->onDelete('restrict')->onUpdate('cascade');
 
+            $table->unsignedBigInteger('payment_id')->nullable();
+            $table->foreign('payment_id')->references('id')->on('payments')->onDelete('restrict')->onUpdate('cascade');
+
             $table->boolean('full_delivery')->default(true);
             $table->dateTime('closing_date')->nullable();
 
             $table->text('observation')->nullable();
             $table->mediumText('signature')->nullable();
 
-            $table->boolean('modified')->default(true);
+            $table->boolean('print_auto')->default(true);
 
             $table->timestamps();
         });

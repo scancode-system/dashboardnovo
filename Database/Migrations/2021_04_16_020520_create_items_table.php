@@ -26,12 +26,10 @@ class CreateItemsTable extends Migration
 
             $table->decimal('price', 10, 2);
             $table->integer('qty');
-
-            //$table->integer('qty_now')->nullable();
-            //$table->integer('qty_future')->nullable();
             
             $table->decimal('discount', 5, 2)->default(0);
             $table->decimal('addition', 5, 2)->default(0);
+            $table->decimal('ipi', 10, 2)->default(0);
 
             $table->string('observation')->nullable();
 

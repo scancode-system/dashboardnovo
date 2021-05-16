@@ -19,4 +19,5 @@ class Company extends Model
     public static function get(){
         return Company::first();
     }
+
 }

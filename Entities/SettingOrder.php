@@ -9,7 +9,7 @@ class SettingOrder extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['order_start', 'buyer'];
+    protected $fillable = ['order_start', 'buyer', 'number_copies', 'auto'];
     protected $table = 'setting_order';
 
     protected static function newFactory()
@@ -23,3 +23,4 @@ class SettingOrder extends Model
         return SettingOrder::first();
     }
 }
+

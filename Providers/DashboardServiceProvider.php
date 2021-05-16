@@ -52,6 +52,8 @@ class DashboardServiceProvider extends ServiceProvider
         $this->app->register(BladeServiceProvider::class);
         $this->app->register(ObserverServiceProvider::class);
         $this->app->register(ValidationServiceProvider::class);
+        $this->app->register(AuthServiceProvider::class);
+        $this->app->register(MiddlewareServiceProvider::class);
 
         $this->commands([LoginCreate::class]);
     }
@@ -64,8 +66,13 @@ class DashboardServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
+            module_path($this->moduleName, 'Config/snappy.php') => config_path('snappy.php'),
+        ], 'config');
+        $this->publishes([
             module_path($this->moduleName, 'Config/config.php') => config_path($this->moduleNameLower . '.php'),
         ], 'config');
+
+        
         $this->mergeConfigFrom(
             module_path($this->moduleName, 'Config/config.php'),
             $this->moduleNameLower

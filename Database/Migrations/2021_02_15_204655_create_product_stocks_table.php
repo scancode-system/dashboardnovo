@@ -19,10 +19,10 @@ class CreateProductStocksTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->integer('qty_now')->default(0);
+            $table->integer('qty_now')->nullable();
             $table->date('date_now')->nullable();
             
-            $table->integer('qty_future')->default(0);
+            $table->integer('qty_future')->nullable();
 			$table->date('date_future')->nullable();
 
             $table->timestamps();

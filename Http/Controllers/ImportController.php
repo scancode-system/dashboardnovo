@@ -38,6 +38,12 @@ class ImportController extends Controller
         return view('dashboard::imports.product');
     }
 
+    public function productSetting(Request $request)
+    {
+        session(['sales_on' => $request->sales_on]);
+        return back();
+    }
+
     /**import operations */
     public function upload(Request $request)
     {

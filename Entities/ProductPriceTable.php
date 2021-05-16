@@ -29,4 +29,8 @@ class ProductPriceTable extends Model
             $product_price_table->delete();
         }
     }
+
+    public static function loadByPriceTableIdAndProductId($price_table_id, $product_id){
+        return ProductPriceTable::where('price_table_id', $price_table_id)->where('product_id', $product_id)->first();
+    }
 }

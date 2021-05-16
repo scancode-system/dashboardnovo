@@ -20,6 +20,9 @@ class CreateSettingOrderTable extends Migration
             $table->integer('order_start')->default(1);
             $table->boolean('buyer')->default(0); 
 
+            $table->integer('number_copies')->default(2);
+            $table->boolean('auto')->default(true);
+
             $table->timestamps();
         });
 

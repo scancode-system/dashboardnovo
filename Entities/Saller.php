@@ -2,6 +2,7 @@
 
 namespace Modules\Dashboard\Entities;
 
+use Modules\Dashboard\Entities\Order;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Dashboard\Database\factories\SallerFactory;
@@ -20,6 +21,12 @@ class Saller extends Model
   protected static function newFactory()
   {
     return SallerFactory::new();
+  }
+
+  /**relationship */
+  public function orders()
+  {
+      return $this->hasMany(Order::class);
   }
 
   /**Repository */

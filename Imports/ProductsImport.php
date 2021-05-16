@@ -123,7 +123,7 @@ class ProductsImport implements OnEachRow, WithHeadingRow, WithEvents
 		$product_stock = $product->product_stock;
 		$product_stock->updateDates($date_now, $date_future);
 		// condição de configuração se quiser abater o ja vendidos implementar quando a parte de vendas tiver terminado
-		$product_stock->put($data['qty_now'], $data['qty_future']);
+		$product_stock->updateStock($data['qty_now'], $data['qty_future'], session('sales_on', false));
 	}
 
 	private function priceQuantitiesUpdate(Product $product, $data){

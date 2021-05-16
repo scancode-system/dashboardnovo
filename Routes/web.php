@@ -18,6 +18,9 @@ Route::prefix('settings')->middleware('auth')->group(function()
     Route::get('settings/{tab}', 'SettingController@index')->name('settings.index')->middleware('auth');
     Route::put('client', 'SettingController@updateClient')->name('settings.client.update');
     Route::put('order', 'SettingController@updateOrder')->name('settings.order.update');
+    Route::put('pdf', 'SettingController@updatePdf')->name('settings.pdf.update');
+    Route::put('pdf/columns', 'SettingController@updatePdfColumns')->name('settings.pdf.columns.update');
+    Route::put('pdf/layouts/{pdf_layout}', 'SettingController@updatePdfLayouts')->name('settings.pdf.layouts.update');
 });
 
 
@@ -71,6 +74,7 @@ Route::prefix('imports')->middleware('auth')->group(function() {
     Route::get('payment', 'ImportController@payment')->name('imports.payment');
     Route::get('client', 'ImportController@client')->name('imports.client');
     Route::get('product', 'ImportController@product')->name('imports.product');
+    Route::put('product/setting', 'ImportController@productSetting')->name('imports.product.setting');
 
 
     Route::get('widget/update', 'ImportController@update')->name('imports.widget.update');
@@ -121,4 +125,28 @@ Route::prefix('product_price_tables')->middleware('auth')->group(function() {
 
 Route::prefix('orders')->middleware('auth')->group(function() {
     Route::get('', 'OrderController@index')->name('orders.index');
+    Route::get('{order}/{tab?}', 'OrderController@edit')->name('orders.edit');
+    Route::post('', 'OrderController@store')->name('orders.store');
+    Route::post('{order}/clone', 'OrderController@clone')->name('orders.clone');
+    Route::put('{order}/status', 'OrderController@update')->name('orders.update.status');	
+    Route::put('{order}', 'OrderController@update')->name('orders.update')->middleware('order-locked');
+    Route::delete('{order}/destroy', 'OrderController@destroy')->name('orders.destroy');
+  
 });
+
+Route::prefix('items')->middleware('auth')->group(function() {
+	Route::get('{product}/edit/info/ajax', 'ItemController@editInfoAjax');
+	Route::post('{order}', 'ItemController@store')->name('items.store')->middleware('order-locked');
+	Route::put('{item}', 'ItemController@update')->name('items.update')->middleware('order-locked');
+	Route::delete('{item}/destroy', 'ItemController@destroy')->name('items.destroy')->middleware('order-locked');
+});
+
+Route::prefix('pdf')->middleware('auth')->group(function() {
+    Route::get('{order}/download', 'PdfController@download')->name('pdf.download');
+});
+
+Route::prefix('reports')->middleware('auth')->group(function() {
+    Route::get('', 'ReportController@index')->name('reports.index');
+    Route::get('{report}', 'ReportController@download')->name('reports.download');
+});
+

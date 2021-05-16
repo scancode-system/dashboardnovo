@@ -19,10 +19,7 @@ class CreateOrderPaymentsTable extends Migration
             $table->unsignedBigInteger('order_id')->unique();
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->unsignedBigInteger('payment_id');
-            $table->foreign('payment_id')->references('id')->on('payments')->onDelete('restrict')->onUpdate('cascade');
-
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->decimal('discount', 5, 2)->default(0);
             $table->decimal('addition', 5, 2)->default(0);
 

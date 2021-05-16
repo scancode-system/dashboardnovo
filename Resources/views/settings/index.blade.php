@@ -26,6 +26,9 @@
 					<div class="tab-pane {{ ($tab==3)?'show active':'' }}" >
 						@include('dashboard::settings.tab.order')
 					</div>
+					<div class="tab-pane {{ ($tab==4)?'show active':'' }}" >
+						@include('dashboard::settings.tab.pdf')
+					</div>
 				</div>
 			</div>
 		</div>

@@ -38,7 +38,7 @@
     <link href="/modules/dashboard/coreui/dist/css/style.css" rel="stylesheet">
 
     <!-- Depois mudar isto de CDN para local -->
-    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons@2.0.0-beta.3/css/all.min.css">
+    <link rel="stylesheet" href="/modules/dashboard/coreui/dist/vendors/@coreui/icons/css/free.min.css">
 
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
@@ -108,7 +108,7 @@
                 </a>
             </li>
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="">
+                <a class="c-sidebar-nav-link" href="{{ route('reports.index') }}">
                     <i class="c-sidebar-nav-icon cil-spreadsheet"></i> Relatórios
                 </a>
             </li>
